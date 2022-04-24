@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Register</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	</head>
+	<body>
+		<div id="main" class="main-container">
+  <div class="box">
+    <h2>Register</h2>
+    <form id="regform" action="{{ url_for('register') }}" method="POST">
+      <div class="input-box">
+		  <input id="user-name" type="text" name="username" required="">
+        <label>Username</label>
+      </div>
+		 <div class="input-box">
+        <input id="password" type="password" name="password" required="">
+        <label>Password</label>
+      </div>
+		<div class="input-box">
+        <input id="email" type="email" name="email" required="">
+        <label>Email</label>
+      </div>
+		 <input id="submit" type="submit" name="" value="Submit">
+			</form>
+	   <p> are you registerd user please login ? <a href="{{ url_for('login') }}">Login</a></p>
+  </div>
+</div>
+
+$("#regform").validate({
+  rules: {
+    username: "required",
+    email: {
+      required: true,
+      email: true
+    }
+  },
+  messages: {
+  username : "Please specify your name",
+   email: {
+      required: "We need your email address to contact you",
+      email: "Your email address must be in the format of name@domain.com"
+    }
+  }
+});
+
+</>
+
+	</body>
+</html>
